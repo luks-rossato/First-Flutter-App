@@ -4,24 +4,7 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(MaterialApp(
       home: Scaffold(
-        body: Column(
-          children: <Widget>[
-            Card(
-              child: ListTile(
-                leading: Icon(Icons.monetization_on),
-                title: Text('R\$ 100,00'),
-                subtitle: Text('Conta poupança'),
-              ),  
-            ),
-            Card(
-              child: ListTile(
-                leading: Icon(Icons.monetization_on),
-                title: Text('R\$ 200,00'),
-                subtitle: Text('Conta poupança'),
-              ),
-            ),
-          ],
-        ),
+        body: ListaTransferencia(),
         appBar: AppBar(
           title: Text('Transferências'),
           backgroundColor: Colors.deepPurple,
@@ -36,3 +19,44 @@ void main() => runApp(MaterialApp(
       ),
     ));
 
+class ListaTransferencia extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Column(
+      children: <Widget>[
+        ItemTransferencia(Transferencia(100.0, 'Conta Poupança')),
+        ItemTransferencia(Transferencia(100.0, 'Conta Poupança')),
+        ItemTransferencia(Transferencia(100.0, 'Conta Poupança')),
+      ],
+    );
+  }
+}
+
+class ItemTransferencia extends StatelessWidget{
+
+  final Transferencia _transferencia;
+
+
+  ItemTransferencia(this._transferencia);
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Card(
+      child: ListTile(
+        leading: Icon(Icons.monetization_on),
+        title: Text(_transferencia.valor.toString()),
+        subtitle: Text(_transferencia.tipoConta.toString()),
+      ),
+    );
+  }
+
+}
+
+class Transferencia {
+  final double valor;
+  final String tipoConta;
+
+  Transferencia(this.valor, this.tipoConta);
+}
