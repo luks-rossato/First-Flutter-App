@@ -26,8 +26,8 @@ class ListaTransferencia extends StatelessWidget {
     return Column(
       children: <Widget>[
         ItemTransferencia(Transferencia(100.0, 'Conta Poupança')),
-        ItemTransferencia(Transferencia(100.0, 'Conta Poupança')),
-        ItemTransferencia(Transferencia(100.0, 'Conta Poupança')),
+        ItemTransferencia(Transferencia(200.0, 'Conta Poupança')),
+        ItemTransferencia(Transferencia(300.0, 'Conta Poupança')),
       ],
     );
   }
