@@ -22,7 +22,7 @@ class ByteBankApp extends StatelessWidget {
 
 class FormularioTransferencia extends StatelessWidget {
   final TextEditingController _controladorCampoNumeroConta =
-      TextEditingController();
+  TextEditingController();
   final TextEditingController _controladorCampoValor = TextEditingController();
 
   @override
@@ -69,8 +69,9 @@ class FormularioTransferencia extends StatelessWidget {
                 onPressed: () {
                   print('Clicou no Confirmar');
                   final int numeroconta =
-                      int.parse(_controladorCampoNumeroConta.text);
-                  final double valor = double.parse(_controladorCampoValor.text);
+                  int.parse(_controladorCampoNumeroConta.text);
+                  final double valor = double.parse(
+                      _controladorCampoValor.text);
                   if (numeroconta != Null && valor != Null) {
                     final transferenciaCriada = Transferencia(valor,
                         numeroconta);
