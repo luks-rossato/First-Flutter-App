@@ -1,16 +1,9 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
-
-import 'dart:html';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(ByteBankApp());
 
 class ByteBankApp extends StatelessWidget {
-  const ByteBankApp({Key? key}) : super(key: key);
-
-  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
@@ -22,10 +15,9 @@ class ByteBankApp extends StatelessWidget {
 
 class FormularioTransferencia extends StatelessWidget {
   final TextEditingController _controladorCampoNumeroConta =
-  TextEditingController();
+      TextEditingController();
   final TextEditingController _controladorCampoValor = TextEditingController();
 
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
@@ -69,12 +61,16 @@ class FormularioTransferencia extends StatelessWidget {
                 onPressed: () {
                   print('Clicou no Confirmar');
                   final int numeroconta =
-                  int.parse(_controladorCampoNumeroConta.text);
-                  final double valor = double.parse(
-                      _controladorCampoValor.text);
+                      int.parse(_controladorCampoNumeroConta.text);
+                  final double valor =
+                      double.parse(_controladorCampoValor.text);
                   if (numeroconta != Null && valor != Null) {
-                    final transferenciaCriada = Transferencia(valor,
-                        numeroconta);
+                    final transferenciaCriada =
+                        Transferencia(valor, numeroconta);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Transferência de $valor reais '
+                          'para a conta $numeroconta!'))
+                    );
                   }
                 },
                 child: Text('Confirmar'))
@@ -84,7 +80,7 @@ class FormularioTransferencia extends StatelessWidget {
 }
 
 class ListaTransferencia extends StatelessWidget {
-  @override
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -114,9 +110,8 @@ class ItemTransferencia extends StatelessWidget {
 
   ItemTransferencia(this._transferencia);
 
-  @override
+
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Card(
       child: ListTile(
         leading: Icon(Icons.monetization_on),
@@ -133,5 +128,8 @@ class Transferencia {
 
   Transferencia(this.valor, this.tipoConta);
 
-
+  @override
+  String toString() {
+    return 'Transferencia{valor: $valor, tipoConta: $tipoConta}';
+  }
 }
