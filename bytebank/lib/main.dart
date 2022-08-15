@@ -67,10 +67,9 @@ class FormularioTransferencia extends StatelessWidget {
                   if (numeroconta != Null && valor != Null) {
                     final transferenciaCriada =
                         Transferencia(valor, numeroconta);
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Transferência de $valor reais '
-                          'para a conta $numeroconta!'))
-                    );
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text('Transferência de $valor reais '
+                            'para a conta $numeroconta!')));
                   }
                 },
                 child: Text('Confirmar'))
@@ -80,7 +79,6 @@ class FormularioTransferencia extends StatelessWidget {
 }
 
 class ListaTransferencia extends StatelessWidget {
-
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -109,7 +107,6 @@ class ItemTransferencia extends StatelessWidget {
   final Transferencia _transferencia;
 
   ItemTransferencia(this._transferencia);
-
 
   Widget build(BuildContext context) {
     return Card(
