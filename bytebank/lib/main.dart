@@ -1,43 +1,115 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'dart:html';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(MaterialApp(
-      home: Scaffold(
-        body: ListaTransferencia(),
-        appBar: AppBar(
-          title: Text('Transferências'),
-          backgroundColor: Colors.deepPurple,
-          centerTitle: true,
-        ),
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.deepPurple,
-          splashColor: Colors.grey,
-          child: Icon(Icons.add),
-          onPressed: () {},
-        ),
-      ),
-    ));
+void main() => runApp(ByteBankApp());
 
-class ListaTransferencia extends StatelessWidget {
+class ByteBankApp extends StatelessWidget {
+  const ByteBankApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return Column(
-      children: <Widget>[
-        ItemTransferencia(Transferencia(100.0, 'Conta Poupança')),
-        ItemTransferencia(Transferencia(200.0, 'Conta Poupança')),
-        ItemTransferencia(Transferencia(300.0, 'Conta Poupança')),
-      ],
+    return MaterialApp(
+      home: Scaffold(
+        body: FormularioTransferencia(),
+      ),
     );
   }
 }
 
-class ItemTransferencia extends StatelessWidget{
+class FormularioTransferencia extends StatelessWidget {
+  final TextEditingController _controladorCampoNumeroConta =
+      TextEditingController();
+  final TextEditingController _controladorCampoValor = TextEditingController();
 
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('Criando Transferência'),
+          backgroundColor: Colors.deepPurple,
+          centerTitle: true,
+        ),
+        body: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: _controladorCampoNumeroConta,
+                style: TextStyle(),
+                decoration: InputDecoration(
+                  hintText: '0000-0',
+                  helperText: 'Digite aqui o numero da sua conta',
+                  labelText: 'Numero da conta',
+                  fillColor: Colors.deepPurple,
+                ),
+                keyboardType: TextInputType.number,
+                cursorColor: Colors.deepPurple,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: _controladorCampoValor,
+                decoration: InputDecoration(
+                    hintText: '0.00',
+                    labelText: 'Valor da Transferência',
+                    icon: Icon(
+                      Icons.monetization_on,
+                      color: Colors.deepPurple,
+                    )),
+                keyboardType: TextInputType.number,
+                cursorColor: Colors.deepPurple,
+              ),
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  print('Clicou no Confirmar');
+                  final int numeroconta =
+                      int.parse(_controladorCampoNumeroConta.text);
+                  final double valor = double.parse(_controladorCampoValor.text);
+                  if (numeroconta != Null && valor != Null) {
+                    final transferenciaCriada = Transferencia(valor,
+                        numeroconta);
+                  }
+                },
+                child: Text('Confirmar'))
+          ],
+        ));
+  }
+}
+
+class ListaTransferencia extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Transferências'),
+        backgroundColor: Colors.deepPurple,
+        centerTitle: true,
+      ),
+      body: Column(
+        children: <Widget>[
+          ItemTransferencia(Transferencia(100.0, 123456)),
+          ItemTransferencia(Transferencia(200.0, 123456)),
+          ItemTransferencia(Transferencia(300.0, 123456)),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.deepPurple,
+        splashColor: Colors.grey,
+        child: Icon(Icons.add),
+        onPressed: () {},
+      ),
+    );
+  }
+}
+
+class ItemTransferencia extends StatelessWidget {
   final Transferencia _transferencia;
-
 
   ItemTransferencia(this._transferencia);
 
@@ -52,12 +124,13 @@ class ItemTransferencia extends StatelessWidget{
       ),
     );
   }
-
 }
 
 class Transferencia {
   final double valor;
-  final String tipoConta;
+  final int tipoConta;
 
   Transferencia(this.valor, this.tipoConta);
+
+
 }
