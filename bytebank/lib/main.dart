@@ -7,7 +7,7 @@ class ByteBankApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: FormularioTransferencia(),
+        body: ListaTransferencia(),
       ),
     );
   }
@@ -53,6 +53,7 @@ class FormularioTransferencia extends StatelessWidget {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text('Transferência de $valor reais '
               'para a conta $numeroconta!')));
+      Navigator.pop(context, transferenciaCriada);
     }
   }
 }
@@ -90,6 +91,7 @@ class Editor extends StatelessWidget {
 }
 
 class ListaTransferencia extends StatelessWidget {
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -108,7 +110,13 @@ class ListaTransferencia extends StatelessWidget {
         backgroundColor: Colors.deepPurple,
         splashColor: Colors.grey,
         child: Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () {
+          final Future<Transferencia?> future =
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return FormularioTransferencia();
+          }));
+          future.then((transferenciaRecebida));
+        },
       ),
     );
   }
