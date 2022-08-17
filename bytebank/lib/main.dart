@@ -6,30 +6,36 @@ void main() => runApp(ByteBankApp());
 class ByteBankApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+          colorScheme: ColorScheme.fromSwatch(
+            primarySwatch: Colors.deepPurple,
+          ).copyWith(secondary: Colors.purpleAccent[700]),
+          buttonTheme: ButtonThemeData(
+            buttonColor: Colors.purpleAccent[700],
+            textTheme: ButtonTextTheme.primary,
+          )),
       home: ListaTransferencia(),
     );
   }
 }
 
 class FormularioTransferencia extends StatefulWidget {
-
   @override
   State<StatefulWidget> createState() {
     return FormularioTransferenciaState();
   }
 }
 
-class FormularioTransferenciaState extends State<FormularioTransferencia>
-{
+class FormularioTransferenciaState extends State<FormularioTransferencia> {
   final TextEditingController _controladorCampoNumeroConta =
-  TextEditingController();
+      TextEditingController();
   final TextEditingController _controladorCampoValor = TextEditingController();
 
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: Text('Criando Transferência'),
-          backgroundColor: Colors.deepPurple,
+          //backgroundColor: Colors.deepPurple,
           centerTitle: true,
         ),
         body: SingleChildScrollView(
@@ -90,10 +96,10 @@ class Editor extends StatelessWidget {
           icon: icone != null ? Icon(icone) : null,
           hintText: dica,
           labelText: rotulo,
-          fillColor: Colors.deepPurple,
+          //fillColor: Colors.deepPurple,
         ),
         keyboardType: TextInputType.number,
-        cursorColor: Colors.deepPurple,
+        //cursorColor: Colors.deepPurple,
       ),
     );
   }
@@ -113,7 +119,7 @@ class ListaTransferenciaState extends State<ListaTransferencia> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Transferências'),
-        backgroundColor: Colors.deepPurple,
+        // backgroundColor: Colors.deepPurple,
         centerTitle: true,
       ),
       body: ListView.builder(
@@ -124,7 +130,7 @@ class ListaTransferenciaState extends State<ListaTransferencia> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.deepPurple,
+        // backgroundColor: Colors.deepPurple,
         splashColor: Colors.grey,
         child: Icon(Icons.add),
         onPressed: () {
@@ -137,7 +143,6 @@ class ListaTransferenciaState extends State<ListaTransferencia> {
               setState(() {
                 widget._transferencias.add(transferenciaRecebida);
               });
-
             }
           });
         },
