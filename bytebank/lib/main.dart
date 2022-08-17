@@ -25,23 +25,25 @@ class FormularioTransferencia extends StatelessWidget {
           backgroundColor: Colors.deepPurple,
           centerTitle: true,
         ),
-        body: Column(
-          children: [
-            Editor(
-                controlador: _controladorCampoNumeroConta,
-                rotulo: 'Numero da Conta',
-                dica: '000'),
-            Editor(
-                controlador: _controladorCampoValor,
-                rotulo: 'Valor da Transferência',
-                dica: '0.00',
-                icone: Icons.monetization_on),
-            ElevatedButton(
-                onPressed: () {
-                  _criaTransferencia(context);
-                },
-                child: Text('Confirmar'))
-          ],
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Editor(
+                  controlador: _controladorCampoNumeroConta,
+                  rotulo: 'Numero da Conta',
+                  dica: '000'),
+              Editor(
+                  controlador: _controladorCampoValor,
+                  rotulo: 'Valor da Transferência',
+                  dica: '0.00',
+                  icone: Icons.monetization_on),
+              ElevatedButton(
+                  onPressed: () {
+                    _criaTransferencia(context);
+                  },
+                  child: Text('Confirmar'))
+            ],
+          ),
         ));
   }
 
@@ -90,10 +92,16 @@ class Editor extends StatelessWidget {
   }
 }
 
-class ListaTransferencia extends StatelessWidget {
-
+class ListaTransferencia extends StatefulWidget {
   final List<Transferencia?> _transferencias = List.empty(growable: true);
 
+  @override
+  State<StatefulWidget> createState() {
+    return ListaTransferenciaState();
+  }
+}
+
+class ListaTransferenciaState extends State<ListaTransferencia> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -102,9 +110,9 @@ class ListaTransferencia extends StatelessWidget {
         centerTitle: true,
       ),
       body: ListView.builder(
-        itemCount: _transferencias.length,
-        itemBuilder: (context, indice){
-          final transferencia = _transferencias[indice];
+        itemCount: widget._transferencias.length,
+        itemBuilder: (context, indice) {
+          final transferencia = widget._transferencias[indice];
           return ItemTransferencia(transferencia!);
         },
       ),
@@ -117,8 +125,10 @@ class ListaTransferencia extends StatelessWidget {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
             return FormularioTransferencia();
           }));
-          future.then((transferenciaRecebida){
-            _transferencias.add(transferenciaRecebida);
+          future.then((transferenciaRecebida) {
+            if (transferenciaRecebida != null) {
+              widget._transferencias.add(transferenciaRecebida);
+            }
           });
         },
       ),
