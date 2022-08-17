@@ -92,6 +92,8 @@ class Editor extends StatelessWidget {
 
 class ListaTransferencia extends StatelessWidget {
 
+  final List<Transferencia?> _transferencias = List.empty(growable: true);
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -99,12 +101,12 @@ class ListaTransferencia extends StatelessWidget {
         backgroundColor: Colors.deepPurple,
         centerTitle: true,
       ),
-      body: Column(
-        children: <Widget>[
-          ItemTransferencia(Transferencia(100.0, 123456)),
-          ItemTransferencia(Transferencia(200.0, 123456)),
-          ItemTransferencia(Transferencia(300.0, 123456)),
-        ],
+      body: ListView.builder(
+        itemCount: _transferencias.length,
+        itemBuilder: (context, indice){
+          final transferencia = _transferencias[indice];
+          return ItemTransferencia(transferencia!);
+        },
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.deepPurple,
@@ -115,7 +117,9 @@ class ListaTransferencia extends StatelessWidget {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
             return FormularioTransferencia();
           }));
-          future.then((transferenciaRecebida));
+          future.then((transferenciaRecebida){
+            _transferencias.add(transferenciaRecebida);
+          });
         },
       ),
     );
