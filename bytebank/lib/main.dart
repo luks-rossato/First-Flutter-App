@@ -6,16 +6,23 @@ void main() => runApp(ByteBankApp());
 class ByteBankApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        body: ListaTransferencia(),
-      ),
+      home: ListaTransferencia(),
     );
   }
 }
 
-class FormularioTransferencia extends StatelessWidget {
+class FormularioTransferencia extends StatefulWidget {
+
+  @override
+  State<StatefulWidget> createState() {
+    return FormularioTransferenciaState();
+  }
+}
+
+class FormularioTransferenciaState extends State<FormularioTransferencia>
+{
   final TextEditingController _controladorCampoNumeroConta =
-      TextEditingController();
+  TextEditingController();
   final TextEditingController _controladorCampoValor = TextEditingController();
 
   Widget build(BuildContext context) {
@@ -127,7 +134,10 @@ class ListaTransferenciaState extends State<ListaTransferencia> {
           }));
           future.then((transferenciaRecebida) {
             if (transferenciaRecebida != null) {
-              widget._transferencias.add(transferenciaRecebida);
+              setState(() {
+                widget._transferencias.add(transferenciaRecebida);
+              });
+
             }
           });
         },
