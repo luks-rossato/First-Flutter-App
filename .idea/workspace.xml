@@ -4,11 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="97575fff-56ad-4d89-929e-4ca15883d1e9" name="Changes" comment="" />
+    <list default="true" id="97575fff-56ad-4d89-929e-4ca15883d1e9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/bytebank/lib/components/editor.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bytebank/lib/models/transferencia.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bytebank/lib/screens/formulario_transferencia.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bytebank/lib/screens/lista_transferencia.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bytebank/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bytebank/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bytebank/test/widget_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bytebank/test/widget_test.dart" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dart File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -17,24 +32,26 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2DPGW6nYlQmFnsnveMd0nz0uKcD" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/lucas/Documents/GitHub/Flutter-App/bytebank&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDK Location&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;android.project.structure&quot;,
-    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "io.flutter.reload.alreadyRun": "true",
+    "last_opened_file_path": "C:/Users/lucas/Documents/GitHub/Flutter-App/bytebank",
+    "project.structure.last.edited": "SDK Location",
+    "project.structure.proportion": "0.17",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "android.project.structure",
+    "show.migrate.to.gradle.popup": "false"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Flutter.main.dart">
     <configuration name="S20FE" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="First-Flutter-App" />
@@ -117,6 +134,17 @@
       <updated>1660593336636</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
